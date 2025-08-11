@@ -7,6 +7,13 @@
     android:orientation="vertical"
     android:padding="16dp"
     tools:context=".MainActivity">
+    <!-- 예시 스니펫: activity_main.xml 안 적절한 위치에 넣기 -->
+    <Spinner
+        android:id="@+id/languageSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp" />
+
 
     <TextView
         android:id="@+id/responseText"
