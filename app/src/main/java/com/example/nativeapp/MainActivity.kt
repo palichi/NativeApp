@@ -318,6 +318,7 @@ class MainActivity : AppCompatActivity() {
         val client = OkHttpClient()
         val url = "https://api.openai.com/v1/chat/completions"
 
+        Log.d("KEY", "➡️ KEY: ${apiKey}")
         // messages -> JSONArray 변환
         val jsonMessages = JSONArray()
         for (msg in messages) {
@@ -336,7 +337,7 @@ class MainActivity : AppCompatActivity() {
 
         // RequestBody 생성
         val body = json.toString().toRequestBody("application/json".toMediaTypeOrNull())
-
+        Log.d("BODY", "➡️ Body: $body")
         // HTTP 요청 빌드
         val request = Request.Builder()
             .url(url)
@@ -344,6 +345,13 @@ class MainActivity : AppCompatActivity() {
             .addHeader("Content-Type", "application/json")
             .post(body)
             .build()
+        // 로그 출력
+        Log.d("KEY", "➡️ KEY: ${apiKey}")
+        Log.d("HTTP_REQUEST", "➡️ Request: ${request.method} ${request.url}")
+        Log.d("HTTP_REQUEST", "📋 Headers:")
+        for ((name, value) in request.headers) {
+            Log.d("HTTP_REQUEST", "$name: $value")
+        }
 
         // 네트워크는 별도 스레드에서 실행해야 함 (안드로이드 정책)
         Thread {

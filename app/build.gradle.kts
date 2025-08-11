@@ -24,7 +24,9 @@ android {
         properties.load(FileInputStream(localPropertiesFile))
         val apiKey = properties.getProperty("openai.api_key") ?: ""
         buildConfigField("String", "OPENAI_API_KEY", "\"${apiKey}\"")
-
+        // Gradle 실행 시 콘솔에 출력
+        println(">>> [Gradle] properties: $properties")
+        println(">>> [Gradle] API 키: $apiKey")
     }
     buildFeatures {
         buildConfig = true
